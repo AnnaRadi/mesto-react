@@ -13,4 +13,5 @@ Create React App
 
 * [Ссылка на страницу GitHub](https://github.com/AnnaRadi/)
 
-* [Ссылка на Проект](https://annaradi.github.io/mesto-react/)
+* [Ссылка на Проект]
+https://AnnaRadi.github.io/mesto-react/

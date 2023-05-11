@@ -36,7 +36,6 @@ export default function Card(props) {
                     <button className={cardLikeButtonClassName} type="button" onClick={handelLikeClick}></button>
                     <p className="element__group-title-like-number">{props.card.likes.length}</p>
                 </div>
-                <button className="element__group-title-delete"></button>
             </div>
         </div>
     )

@@ -3,6 +3,20 @@ class Api {
     this._url = config.url;
     this._headers = config.headers;
   }
+  deleteCard(cardId) {
+    return fetch(`${this._url}/cards/${cardId}`, {
+      method: 'DELETE',
+      headers: this._headers
+    })
+    .then(res => this._checkResponse(res));
+}
+  changeLikeCardStatus(cardId, isLiked) {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
+      method: `${!isLiked ? 'DELETE' : 'PUT'}`,
+      headers: this._headers
+    })
+      .then(res => this._checkResponse(res));
+  }
   getAllCards() {
     return fetch(`${this._url}/cards`, {
       method: 'GET',
@@ -55,6 +69,8 @@ class Api {
       body: JSON.stringify(data)
     }).then(this._checkResponse)
   }
+
+  
   _checkResponse(res) {
     // тут проверка ответа
     if (res.ok) {

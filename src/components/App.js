@@ -1,11 +1,9 @@
 import '../index.css';
-import React from 'react';
 import Header from './Header.js';
 import Main from './Main.js';
 import Footer from './Footer.js';
 import { useState, useEffect } from 'react';
-import ImagePopup from './ImagePopup'
-import PopupWithForm from './PopupWithForm';
+import ImagePopup from './ImagePopup';
 import CurrentUserContext from '../contexts/CurrentUserContext.js';
 import api from '../utils/Api.js';
 import EditProfilePopup from './EditProfilePopup';
@@ -31,7 +29,6 @@ function App() {
         });
 }, [])
 
-
   function closeAllPopups() {
     setSelectedCard(null);
     setIsEditAvatarPopupOpen(false);
@@ -42,9 +39,9 @@ function App() {
   function handleCardDelete(card) {
     api.deleteCard(card._id)
       .then(() => {
-        console.log(card._id)
        return setCards((state) => state.filter((item) => item._id !== card._id))
       })
+      .catch((err) => console.log(`Ошибка: ${err}`))
   }
 
   function handleCardLike(card) {
@@ -57,7 +54,8 @@ function App() {
       console.log(newCard)
         setCards((state) => {
           return state.map((c) => c._id === card._id ? newCard : c)});
-    });
+    })
+    .catch((err) => console.log(`Ошибка: ${err}`))
 }
   function handleUpdateUser(newUserInfo) {
     api.editProfile(newUserInfo)
@@ -66,6 +64,7 @@ function App() {
         setCurrentUser(data)
         closeAllPopups()
       })
+      .catch((err) => console.log(`Ошибка: ${err}`))
   }
 
   function handleUpdateAvatar(newAvatar) {
@@ -74,6 +73,7 @@ function App() {
         setCurrentUser(data)
         closeAllPopups()
       })
+      .catch((err) => console.log(`Ошибка: ${err}`))
   }
 
   function handleAddPlaceSubmit(newCard) {
@@ -82,6 +82,7 @@ function App() {
         setCards([newCard, ...cards])
         closeAllPopups()
       })
+      .catch((err) => console.log(`Ошибка: ${err}`))
   }
 
   function handleCardClick(card) {

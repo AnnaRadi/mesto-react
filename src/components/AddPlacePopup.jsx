@@ -48,6 +48,7 @@ export default function AddPlacePopup(props) {
             maxLength="30"
             required
             onChange={handleChangePlaceName}
+            value={placeName || ""}
           />
           <span className="error input-error-nameMesto"></span>
           <input
@@ -59,6 +60,7 @@ export default function AddPlacePopup(props) {
             minLength="2"
             required
             onChange={handleChangePlaceLink}
+            value={placeLink || ""}
           />
           <span className="error input-error-linkPicture"></span>
         </PopupWithForm>
